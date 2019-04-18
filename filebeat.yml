@@ -1,0 +1,8 @@
+filebeat.inputs:
+  - input_type: log
+    paths:
+      - ${LOGSTASH_PATH}
+
+output.logstash:
+  hosts: [${LOGSTASH_HOST}]
+  
