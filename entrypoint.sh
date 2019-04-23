@@ -8,13 +8,18 @@ sleep 3
 printf "\n* Starting ${SITE_NAME} App *\n\n"
 if [ -d 'log' ]
 then
-    printf "/app/log/ exists already\n"
+    rm -rf log/
+    mkdir log
+    touch log/${SITE_NAME}.log
 else
     mkdir log
     touch log/${SITE_NAME}.log
 fi
 
+cd /
 filebeat run filebeat.yml &
+
+cd /app/
 sleep 1
 gunicorn base.wsgi -b 0.0.0.0:8000 || \
 printf "Error Starting ${SITE_NAME} App"

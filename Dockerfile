@@ -6,14 +6,12 @@ RUN apk add --no-cache \
     postgresql-dev \
     postgresql-client \
     musl-dev \
-    curl \
-    bash \
-    git
+    curl
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 RUN apk add --no-cache filebeat
 
-COPY ./filebeat.yml /app/
+COPY ./filebeat.yml /
 COPY ./requirements.txt /app/
 COPY ./entrypoint.sh /
 
@@ -23,5 +21,6 @@ WORKDIR /app
 # RUN chown -R jal:jal /app/log/
 RUN pip install -U pip && pip install -r requirements.txt
 # USER jal
+
 EXPOSE 8000
 ENTRYPOINT [ "/bin/sh", "/entrypoint.sh" ]
