@@ -1,8 +1,8 @@
+name: "${SITE_NAME}"
 filebeat.inputs:
-  - input_type: log
+  - type: log
     paths:
-      - ${LOGSTASH_PATH}
+      - "${LOGSTASH_PATH}"
 
 output.logstash:
-  hosts: [${LOGSTASH_HOST}]
-  
+  hosts: ["${LOGSTASH_HOST}"]

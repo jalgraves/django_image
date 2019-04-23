@@ -6,7 +6,6 @@ django-webpack-loader
 djangorestframework
 django-filter
 requests
-twilio
 coverage
 aiohttp
 bs4
